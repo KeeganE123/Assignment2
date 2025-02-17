@@ -1,4 +1,4 @@
-INSERT INTO password_records (title, username, password, url, email, notes) VALUES
+INSERT INTO password_record (title, username, password, url, email, notes) VALUES
 ('Facebook', 'user1', 'pass123', 'https://facebook.com', 'user1@example.com', 'Personal account'),
 ('Gmail', 'user2', 'securepass', 'https://mail.google.com', 'user2@example.com', 'Work email'),
 ('Twitter', 'user3', 'tweetpass', 'https://twitter.com', 'user3@example.com', 'Social media'),

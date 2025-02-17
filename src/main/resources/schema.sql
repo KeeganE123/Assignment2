@@ -1,4 +1,4 @@
-CREATE TABLE password_records (
+CREATE TABLE IF NOT EXISTS password_record (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
     username VARCHAR(255),

@@ -1,21 +1,19 @@
 package sheridan.keeganerdis.assignment2.beans;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name= "password_record")
 public class PasswordRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     private long id;
 
     private String title;
@@ -25,5 +23,14 @@ public class PasswordRecord {
     private String email;
     private String notes;
 
+
+    public PasswordRecord(String title, String username, String password, String url, String email, String notes) {
+        this.title = title;
+        this.username = username;
+        this.password = password;
+        this.url = url;
+        this.email = email;
+        this.notes = notes;
+    }
 
 }
