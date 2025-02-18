@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+//Keegan Erdis 991739416
 @Controller
 public class RecordController {
 
@@ -19,12 +20,13 @@ public class RecordController {
     @Autowired
     private PasswordRepository passwordRepository;
 
+    //making sure that the user always starts on the index page
     @GetMapping("/")
     public String home (Model model){
         return "redirect:/index";
     }
 
-
+    //generating the random number for the index page
     @GetMapping("/index")
     public String showHomePage(Model model) {
 
@@ -34,7 +36,7 @@ public class RecordController {
         return "index";
 
     }
-
+    //function for saving a password to the database
     @PostMapping("/save-password")
     public String savePasswordRecord(
             @RequestParam String title,
@@ -46,6 +48,7 @@ public class RecordController {
             Model model) {
 
         PasswordRecord passwordRecord = new PasswordRecord(title, username, password, url, email, notes);
+        passwordRecord.setId(passwordRecord.generateRandomNum());
         passwordRepository.save(passwordRecord);
 
 
@@ -53,7 +56,7 @@ public class RecordController {
 
         return "index";
     }
-
+    //viewing records where it displays all iterable objects
     @GetMapping("/view-records")
     public String viewPasswordRecords(Model model) {
         Iterable<PasswordRecord> passwordRecords = passwordRepository.findAll();

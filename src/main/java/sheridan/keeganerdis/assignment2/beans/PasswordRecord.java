@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+//Keegan Erdis 991739416
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class PasswordRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
 
     private String title;

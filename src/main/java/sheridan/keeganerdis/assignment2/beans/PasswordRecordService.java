@@ -8,13 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import sheridan.keeganerdis.assignment2.database.PasswordRepository;
 
 
-
+//Keegan Erdis 991739416
 @Service
 public class PasswordRecordService {
 
     @Autowired
     private PasswordRepository passwordRepository;
-
+    //logger for debugging purposes
     private static final Logger logger = LoggerFactory.getLogger(PasswordRecordService.class);
 
     @Transactional
