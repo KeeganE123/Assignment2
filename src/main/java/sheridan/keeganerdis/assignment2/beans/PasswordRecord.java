@@ -3,6 +3,8 @@ package sheridan.keeganerdis.assignment2.beans;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +33,10 @@ public class PasswordRecord {
         this.url = url;
         this.email = email;
         this.notes = notes;
+    }
+
+    public long generateRandomNum(){
+        return ThreadLocalRandom.current().nextLong(100_000_000L, 1_000_000_000L);
     }
 
 }

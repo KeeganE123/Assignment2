@@ -19,14 +19,19 @@ public class RecordController {
     @Autowired
     private PasswordRepository passwordRepository;
 
-
     @GetMapping("/")
+    public String home (Model model){
+        return "redirect:/index";
+    }
+
+
+    @GetMapping("/index")
     public String showHomePage(Model model) {
 
         long generatedId = ThreadLocalRandom.current().nextLong(100_000_000L, 1_000_000_000L);
         model.addAttribute("generatedId", generatedId);
         System.out.println("Generated ID: " + generatedId);
-        return "/index";
+        return "index";
 
     }
 
@@ -46,7 +51,7 @@ public class RecordController {
 
         model.addAttribute("successMessage", "Password record added successfully!");
 
-        return "redirect:/index";
+        return "index";
     }
 
     @GetMapping("/view-records")
@@ -55,6 +60,26 @@ public class RecordController {
         model.addAttribute("passwordRecords", passwordRecords);
         return "passwordRecords";
     }
+
+    @GetMapping("/search-records")
+    public String searchPage(){
+        return "searchPasswords";
+    }
+    @PostMapping("/search-records")
+    public String searchByTitle(@RequestParam("title") String title, Model model) {
+
+        List<PasswordRecord> searchResults = passwordRepository.findByTitleContaining(title);
+
+
+        if (searchResults.isEmpty()) {
+            model.addAttribute("message", "Record Not Found!");
+        } else {
+            model.addAttribute("message", null);
+        }
+        model.addAttribute("records", searchResults);
+        return "searchPasswords";
+    }
+
 
 
 }
